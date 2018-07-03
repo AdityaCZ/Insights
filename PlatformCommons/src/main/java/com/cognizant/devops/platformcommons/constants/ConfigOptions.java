@@ -23,6 +23,7 @@ public interface ConfigOptions {
 	String TOOLS_CONFIG_FILE = "toolsConfig.json";
 	String CORRELATION_TEMPLATE = "correlation.json";
 	String DATA_ENRICHMENT_TEMPLATE = "data-enrichment.json";
+	String OFFLINE_DATA_PROCESSING_FOLDER = "data-enrichment";
 	String ENDPOINT_DATA = "endpointData";
 	String USER_DATA = "userData";
 	String PROPERTY_USER_HOME = "user.home";
@@ -36,6 +37,7 @@ public interface ConfigOptions {
 	String CORRELATION_FILE_RESOLVED_PATH = System.getenv().get(INSIGHTS_HOME) + FILE_SEPERATOR + ConfigOptions.CONFIG_DIR + FILE_SEPERATOR + ConfigOptions.CORRELATION_TEMPLATE;
 	String TOOLS_CONFIG_FILE_RESOLVED_PATH = System.getProperty(ConfigOptions.PROPERTY_USER_HOME) + FILE_SEPERATOR + ConfigOptions.CONFIG_DIR + FILE_SEPERATOR + ConfigOptions.TOOLS_CONFIG_FILE;
 	String DATA_ENRICHMENT_FILE_RESOLVED_PATH = System.getenv().get(INSIGHTS_HOME) + FILE_SEPERATOR + ConfigOptions.CONFIG_DIR + FILE_SEPERATOR + ConfigOptions.DATA_ENRICHMENT_TEMPLATE;
+	String OFFLINE_DATA_PROCESSING_RESOLVED_PATH = System.getenv().get(INSIGHTS_HOME) + FILE_SEPERATOR + ConfigOptions.CONFIG_DIR + FILE_SEPERATOR + ConfigOptions.OFFLINE_DATA_PROCESSING_FOLDER;
 	String FAILURE_RESPONSE = "FAILURE";
 	String SUCCESS_RESPONSE = "SUCCESS";
 	String CONFIG_FILE_DIR = System.getenv().get(INSIGHTS_HOME) + FILE_SEPERATOR + ConfigOptions.CONFIG_DIR;
@@ -47,4 +49,10 @@ public interface ConfigOptions {
 	String MAC_ADDRESS = "macAddress";
 	String VALID_TILL = "validTill";
 	String DATE_FORMAT = "MM/dd/yyyy";
+	String QUERY_NAME = "queryName";
+	String CYPHER_QUERY = "cypherQuery";
+	String RUN_SCHEDULE = "runSchedule";
+	String LAST_EXECUTION_TIME = "lastExecutionTime";
+	String RECORDS_PROCESSED = "recordsProcessed";
+	String PROCESSING_TIME = "processingTime";  
 }

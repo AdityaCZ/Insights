@@ -18,8 +18,10 @@ package com.cognizant.devops.platformcommons.core.util;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
 import com.cognizant.devops.platformcommons.config.ApplicationConfigProvider;
@@ -31,7 +33,7 @@ public class InsightsUtils {
 	}
 	
 	private static String sparkTimezone = ApplicationConfigProvider.getInstance().getInsightsTimeZone();
-	private static ZoneId zoneId = ZoneId.of( sparkTimezone );
+	public static ZoneId zoneId = ZoneId.of( sparkTimezone );
 	
 	public static long getDataFromTime(String schedule) {
 		Long time = null;
@@ -252,6 +254,13 @@ public class InsightsUtils {
 		ZonedDateTime now = ZonedDateTime.now( zoneId );
 		return now.toLocalDate().lengthOfYear();
 	}
+	
+	public static String getLocalDateTime(String formatPattern) {
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(formatPattern);
+		return dtf.format(now);
+	}
+
 	
 	public static Boolean isAfterRange(String schedule,Long days) {
 		Boolean result = Boolean.FALSE;
