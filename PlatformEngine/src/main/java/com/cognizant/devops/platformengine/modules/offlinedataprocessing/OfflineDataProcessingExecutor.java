@@ -65,8 +65,6 @@ public class OfflineDataProcessingExecutor implements Job{
 	}
 	
 	private void processEachOfflineVector(File jsonFile) {
-		System.out.println("Processing ----"+ jsonFile.getName());
-		System.out.println("-------------------------------------------------");
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(jsonFile))) {
 			 JsonArray jsonArray = new Gson().fromJson(reader, JsonArray.class);
@@ -89,9 +87,6 @@ public class OfflineDataProcessingExecutor implements Job{
 					 } else {
 						 updatedJsonObject = jsonObject;
 					 }
-					 
-					 System.out.println("query name:" + queryName+"\ncypher query:"+ cypherQuery + "\nrunSchedule:" + runSchedule);
-					 System.out.println("-------------------------------------------------");
 					 updatedJsonArray.add(updatedJsonObject);				 
 				 }
 			 }
@@ -108,8 +103,6 @@ public class OfflineDataProcessingExecutor implements Job{
 			log.error("Unable to read data-enrichment.json file.", e);
 		} 
 		
-         System.out.println("Successfully updated json object to file...!!");		 
-		 System.out.println("-------------------------------------------------");
 	}
 	
 	
@@ -154,13 +147,10 @@ public class OfflineDataProcessingExecutor implements Job{
 					break;
 				}
 				log.debug(" Processed "+processedRecords);
-				System.out.println(" Processed "+processedRecords);
 				recordCount = recordCount + processedRecords;
 			}
 			long queryExecutionEndTime = System.currentTimeMillis();
 			long queryProcessingTime = (queryExecutionEndTime - queryExecutionStartTime);
-			System.out.println(" recordCount >> "+ recordCount);
-			System.out.println(" Query Processing Time in MiliSeconds" + queryProcessingTime);
 			if (jsonObject != null) {
 				// Adds or Updates "recordsProcessed" attribute in the data-enrichment.json file
 				if (jsonObject.get(ConfigOptions.RECORDS_PROCESSED) != null) {
